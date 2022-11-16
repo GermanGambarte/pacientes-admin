@@ -39,6 +39,7 @@ export const Form = () => {
         </label>
         <textarea className="Form-textarea" cols="6" id="symptoms" rows="5" />
       </div>
+      <p className="Form-error">Texto de error</p>
       <button className="Form-button" type="submit">
         Agregar a la Lista
       </button>
