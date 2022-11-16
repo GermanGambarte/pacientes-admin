@@ -1,42 +1,103 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+:root {
+  --dark-bg: #2d333b;
+  --dark-text: #fff;
+  --dark-secondary: #434c56;
+  --light-bg: #f8fafc;
+  --light-text: #434c56;
+  --color-primary: #316dca;
+  --color-danger: #ca3131;
+}
+
+.App {
+  font-family: Poppins;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+.App-h1 {
   text-align: center;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.App-container {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  /* display: grid; */
+  /* grid-template-columns: 1fr,1fr; */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Form {
+  display: grid;
+  gap: 15px;
+  width: 45%;
+}
+.Form-h2,
+.Patients-h2 {
+  text-align: center;
+}
+.Form-div {
+  display: grid;
+  grid-template-rows: 1fr, 1fr;
+}
+.Form-label {
+  display: block;
+}
+.Form-input,
+.Form-textarea {
+  border-radius: 10px;
+}
+.Form-input {
+  outline: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+.Form-textarea {
+  width: 100%;
+  resize: none;
+  outline: none;
+  padding: 5px 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.Form-button {
+  background-color: var(--color-primary);
 }
 
-.card {
-  padding: 2em;
+.Patients {
+  width: 45%;
 }
-
-.read-the-docs {
-  color: #888;
+.Patients-h2 {
+  padding-bottom: 2rem;
 }
-
+.Patients-card {
+  background-color: var(--dark-secondary);
+  padding: 15px;
+  border-radius: 15px;
+  font-weight: 200;
+  display: grid;
+  gap: 10px;
+}
+.Patients-span {
+  font-weight: 600;
+}
+.Patients-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.Patients-buttons--edit,
+.Patients-buttons--delete,
+.Form-button {
+  border: none;
+  padding: 5px 10px;
+  color: var(--dark-text);
+  font-weight: 400;
+  border-radius: 10px;
+}
+.Patients-buttons--edit {
+  width: 48%;
+  background-color: var(--color-primary);
+}
+.Patients-buttons--delete {
+  width: 48%;
+  background-color: var(--color-danger);
+}
