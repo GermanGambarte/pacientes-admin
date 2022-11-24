@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
-export const Form = () => {
+export const Form = ({ addNewDate }) => {
   const [date, setDate] = useState({
     pet: '',
     propietary: '',
@@ -27,10 +28,18 @@ export const Form = () => {
       return setError({ status: true, message: 'Los campos son obligatorios' })
     }
     setError({ status: false, message: '' })
+    date.id = uuidv4()
+    addNewDate(date)
+    setDate({
+      pet: '',
+      propietary: '',
+      email: '',
+      day: '',
+      hour: '',
+      symptoms: '',
+    })
   }
   const { pet, propietary, email, day, hour, symptoms } = date
-
-  console.log(date)
 
   return (
     <form className="Form" onSubmit={onSubmitHandler}>
@@ -116,7 +125,7 @@ export const Form = () => {
           onChange={onChangeHandler}
         />
       </div>
-      {error.status ? <p className="Form-error">Texto de error</p> : null}
+      {error.status ? <p className="Form-error">{error.message}</p> : null}
       <button className="Form-button">Agregar a la Lista</button>
     </form>
   )
