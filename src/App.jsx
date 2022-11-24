@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { Form } from './components/Form.component'
 import { Patients } from './components/Patients.component'
@@ -6,7 +6,14 @@ import { Patients } from './components/Patients.component'
 import './App.css'
 
 const App = () => {
-  const [dates, setDates] = useState([])
+  const initialState = JSON.parse(localStorage.getItem('dates'))
+
+  const [dates, setDates] = useState(initialState || [])
+
+  useEffect(() => {
+    localStorage.setItem('dates', JSON.stringify(dates))
+  }, [dates])
+
   const addNewDate = (date) => {
     setDates([...dates, date])
   }
