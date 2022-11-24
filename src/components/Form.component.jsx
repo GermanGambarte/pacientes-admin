@@ -9,14 +9,31 @@ export const Form = () => {
     hour: '',
     symptoms: '',
   })
+  const [error, setError] = useState({ status: false, message: '' })
   const onChangeHandler = (e) => {
     setDate({ ...date, [e.target.name]: e.target.value })
   }
+  const onSubmitHandler = (e) => {
+    e.preventDefault()
+    const emptyField =
+      pet === '' ||
+      propietary === '' ||
+      email === '' ||
+      day === '' ||
+      hour === '' ||
+      symptoms === ''
 
+    if (emptyField) {
+      return setError({ status: true, message: 'Los campos son obligatorios' })
+    }
+    setError({ status: false, message: '' })
+  }
   const { pet, propietary, email, day, hour, symptoms } = date
 
+  console.log(date)
+
   return (
-    <form className="Form">
+    <form className="Form" onSubmit={onSubmitHandler}>
       <h2 className="Form-h2">Crear nueva cita</h2>
       <div className="Form-div">
         <label className="Form-label" htmlFor="pet">
@@ -99,10 +116,8 @@ export const Form = () => {
           onChange={onChangeHandler}
         />
       </div>
-      <p className="Form-error">Texto de error</p>
-      <button className="Form-button" type="submit">
-        Agregar a la Lista
-      </button>
+      {error.status ? <p className="Form-error">Texto de error</p> : null}
+      <button className="Form-button">Agregar a la Lista</button>
     </form>
   )
 }
